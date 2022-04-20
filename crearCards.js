@@ -42,8 +42,6 @@ function crearCard(producto) {
     comprar.onclick = () => {
         carrito.push(producto)
         console.log(carrito)
-        //let resumen = carrito.reduce((acumulador, producto) => acumulador + producto.cantidad, 0);
-        //console.log(resumen)
         crearDropdown(divCarrito)
     }
 }
