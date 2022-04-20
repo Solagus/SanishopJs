@@ -7,7 +7,7 @@
 }
 
 body {
-  background-image: url("./img/marble-4700915_1920.jpg");
+  background-image: url("./imagenes/marble-4700915_1920.jpg");
   background-size: cover;
 }
 
@@ -58,7 +58,7 @@ a {
 #carrito{
   width: 25em;
   height: 33em;
-  background-image: url("./img/modern-white-background-with-shiny-gold-geometric-element-abstract-light-clean-silver-background-vector.jpg");
+  background-image: url("./imagenes/modern-white-background-with-shiny-gold-geometric-element-abstract-light-clean-silver-background-vector.jpg");
   background-size: 220%;
 }
 
