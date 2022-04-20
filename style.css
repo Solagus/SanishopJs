@@ -13,6 +13,7 @@ body {
 
 #logo {
   font-family: Lobster;
+  display: flex;
 }
 
 a {
@@ -57,7 +58,7 @@ a {
 }
 #carrito{
   width: 25em;
-  height: 33em;
+  height: auto;
   background-image: url("./imagenes/modern-white-background-with-shiny-gold-geometric-element-abstract-light-clean-silver-background-vector.jpg");
   background-size: 220%;
 }
