@@ -28,8 +28,8 @@ let li
 let divCarrito = document.getElementById("carrito")
 let divDelLi =document.getElementById("lista")
 
-function crearDropdown(divi, divj){
-    for (let i of carrito){
+function crearDropdown(divi){
+    for (i of carrito){
         li = document.createElement("li")
         li.innerHTML = `
           <div class="filaDelCarrito d-flex justify-content-evenly">
@@ -41,7 +41,6 @@ function crearDropdown(divi, divj){
           `
         divi.append(li)
     }
-    console.log(carrito)
 }
 
 //⁡⁣⁢⁣​‌‍‌𝕗𝕚𝕟𝕒𝕝𝕚𝕫𝕒 𝕖𝕝 𝕕𝕣𝕠𝕡𝕕𝕠𝕨𝕟​⁡
@@ -93,6 +92,7 @@ function crearCard(producto) {
             actualizarDom(div, producto.cantidad)
         }
     }
+
     let comprar = document.getElementById(`comprar${producto.id}`)
     comprar.onclick = () => {
         if (carrito.find((el) => el.nombre == producto.nombre)){
@@ -101,9 +101,10 @@ function crearCard(producto) {
         else{
             carrito.push(producto)
         }
+        //localStorage.setItem("carrito", JSON.stringify(carrito))
         console.log(carrito)
         divDelLi.innerHTML = ""
-        crearDropdown(divDelLi, divCarrito)
+        //crearDropdown(divDelLi)
     
     }
 
