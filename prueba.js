@@ -102,7 +102,6 @@ function crearCard(producto) {
             carrito.push(producto)
         }
         localStorage.setItem("carrito", JSON.stringify(carrito))
-        console.log(carrito)
         divDelLi.innerHTML = ""
         crearDropdown(divDelLi)
     
