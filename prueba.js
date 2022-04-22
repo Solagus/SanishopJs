@@ -29,7 +29,7 @@ let divCarrito = document.getElementById("carrito")
 let divDelLi =document.getElementById("lista")
 
 function crearDropdown(divi){
-    for (i of carrito){
+    for (i of JSON.parse(localStorage.getItem("carrito"))){
         li = document.createElement("li")
         li.innerHTML = `
           <div class="filaDelCarrito d-flex justify-content-evenly">
@@ -101,10 +101,10 @@ function crearCard(producto) {
         else{
             carrito.push(producto)
         }
-        //localStorage.setItem("carrito", JSON.stringify(carrito))
+        localStorage.setItem("carrito", JSON.stringify(carrito))
         console.log(carrito)
         divDelLi.innerHTML = ""
-        //crearDropdown(divDelLi)
+        crearDropdown(divDelLi)
     
     }
 
@@ -116,6 +116,3 @@ function crearCard(producto) {
 for (i = 0; i < productos.length; i++) {
     crearCard(productos[i])
 }
-
-let carritoAJson = JSON.stringify(carrito)
-localStorage("carrito", carritoAJson)
