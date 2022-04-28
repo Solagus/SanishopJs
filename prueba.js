@@ -41,7 +41,23 @@ function crearDropdown(divi){
           `
         divi.append(li)
     }
+    let botonEliminar = document.getElementById(`btn-eliminar${i.id}`)
+    let finalizarCompra = document.getElementById("finalizarCompra")
+    if (carrito != ""){
+        finalizarCompra.addEventListener("click", () => {
+            let confirm = Swal.fire({
+                title: "Esta seguro que desea finalizar la compra?",
+                icon: "question",
+                confirmButtonText: "Estoy seguro",
+                allowOutsideClick: true,
+                confirmButtonColor: "#85bdbf",
+                showCloseButton: true
+             })
+        })
+    }
 }
+
+
 
 //⁡⁣⁢⁣​‌‍‌𝕗𝕚𝕟𝕒𝕝𝕚𝕫𝕒 𝕖𝕝 𝕕𝕣𝕠𝕡𝕕𝕠𝕨𝕟​⁡
 
@@ -101,6 +117,7 @@ function crearCard(producto) {
         else{
             carrito.push(producto)
         }
+
         localStorage.setItem("carrito", JSON.stringify(carrito))
         divDelLi.innerHTML = ""
         crearDropdown(divDelLi)
