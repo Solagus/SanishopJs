@@ -1,35 +1,25 @@
-class Producto {
-    constructor(id, imagen, nombre, cantidad, maximo, precio) {
-        this.id = id
-        this.imagen = imagen,
-        this.nombre = nombre,
-        this.cantidad = 1,
-        this.maximo = maximo,
-        this.precio = precio
-    }
-}
 
-
-let productos = [
-    new Producto(0, "./imagenes/griferia-fv/california.jpg", "Griferia California", 1, 5, 10000),
-    new Producto(1, "./imagenes/Vanitorys/vanitory1.jpeg", "Vanitory 50X40X80", 1, 3, 13000),
-    new Producto(2, "./imagenes/griferia-fv/Epuyen.jpg", "Griferia Epuyen", 1, 2, 15000),
-    new Producto(3, "./imagenes/Accesorios/jabonera-dominic.jpg", "Jabonera Dominic", 1, 6, 5000),
-    new Producto(4, "./imagenes/Asiento-de-inodoro/tapa-de-asiento-florencia.jpg", "Asiento Florencia", 1, 4, 10000),
-    new Producto(5, "./imagenes/Accesorios/portarrollos-urbano.jpg", "Portarrollos Urbano", 1, 5, 4000)
-]
-
+import {productos} from "./productos.js"
 
 let carrito = []
+let carritoJSON
 
-//⁡⁣⁢⁣​‌‍‌𝕕𝕣𝕠𝕡𝕕𝕠𝕨𝕟​⁡
+//fetch y productos json
+
+fetch("./productos.json")
+  .then((response) => response.json())
+  .then((data) => {
+      carritoJSON = data
+  })
+
+//Dropdown
 
 let li
 let divCarrito = document.getElementById("carrito")
 let divDelLi =document.getElementById("lista")
 
 function crearDropdown(divi){
-    for (i of JSON.parse(localStorage.getItem("carrito"))){
+    for (i of carritoJSON){
         li = document.createElement("li")
         li.innerHTML = `
           <div class="filaDelCarrito d-flex justify-content-evenly">
@@ -58,10 +48,9 @@ function crearDropdown(divi){
 }
 
 
+//Finaliza el dropdown
 
-//⁡⁣⁢⁣​‌‍‌𝕗𝕚𝕟𝕒𝕝𝕚𝕫𝕒 𝕖𝕝 𝕕𝕣𝕠𝕡𝕕𝕠𝕨𝕟​⁡
-
-//⁡⁢⁣⁣​‌‍‌𝕔𝕒𝕣𝕕𝕤 𝕪 𝕓𝕠𝕥𝕠𝕟𝕖𝕤​⁡
+//Crear las Cards y los botones​⁡
 
 function actualizarDom(div, cantidades) {
     let cantidad = div.querySelector(".cantidad")
@@ -91,9 +80,9 @@ function crearCard(producto) {
         
     `
     document.getElementById("containerCard").append(div)
-    
-    //​‌‍‌⁡⁢⁢⁣⁡⁢⁣⁢𝕓𝕠𝕥𝕠𝕟𝕖𝕤⁡⁡​
-    
+
+    //Botones
+
     let suma = document.getElementById(`sumar${producto.id}`)
     suma.onclick = () => {
         if (producto.cantidad < producto.maximo) {
@@ -125,9 +114,6 @@ function crearCard(producto) {
     }
 
 }
-
-//​‌‍‌⁡⁢⁣⁣𝕗𝕚𝕟𝕒𝕝𝕚𝕫𝕒𝕟 𝕔𝕒𝕣𝕕𝕤 𝕪 𝕓𝕠𝕥𝕠𝕟𝕖𝕤⁡​
-
 
 for (i = 0; i < productos.length; i++) {
     crearCard(productos[i])
